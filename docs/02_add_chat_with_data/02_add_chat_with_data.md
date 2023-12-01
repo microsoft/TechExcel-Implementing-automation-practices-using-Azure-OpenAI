@@ -1,4 +1,4 @@
-# Exercise 02 Solution - Add chat with your data
+# Exercise 02 - Add chat with your data
 
 ## Lab Scenario
 
