@@ -8,10 +8,9 @@ Bringing our own data is one great way to enhance GPT models in Azure OpenAI, al
 
 After you complete this lab, you will be able to:
 
-TODO:
-* Implement a customer account information lookup function against Cosmos DB using C#
-* Create a function to perform customer account lookup as part of a broader conversation
-* Incorporate function calling in the existing chat completions solution
+* Implement a customer account information lookup API endpoint against Cosmos DB using C#
+* Create a function in Python to perform customer account lookup as part of a broader conversation
+* Incorporate function calling into the existing chat completions solution
 
 ## Lab Duration
 
