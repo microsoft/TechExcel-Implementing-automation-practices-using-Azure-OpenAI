@@ -209,31 +209,20 @@ def recognize_from_microphone(speech_key, speech_region, speech_recognition_lang
     
 
 ### All Exercises
-def generate_chat(chat_option):
-    # Initialize chat history
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-
-    # Display chat messages from history on app rerun
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-
-    # Await a user message and handle the chat prompt when it comes in.
-    if prompt := st.chat_input("Enter a message:"):
-        if chat_option == "Chat with Data":
-            handle_chat_prompt(prompt)
-        elif chat_option == "Function Calls":
-            handle_chat_prompt_with_functions(prompt)
-        else:
-            st.write("Please select a tab before calling the chatbot.")
+def handle_prompt(chat_option, prompt):
+    if chat_option == "Chat with Data":
+        handle_chat_prompt(prompt)
+    elif chat_option == "Function Calls":
+        handle_chat_prompt_with_functions(prompt)
+    else:
+        st.write("Please select a chat option before calling the chatbot.")
 
 def main():
     st.write(
     """
-    # Contoso Suites Example Page
+    # Chat with Data
 
-    This Streamlit dashboard is intended to serve as a proof of concept of Azure OpenAI functionality for Contoso Suites employees.  It is not intended to be a production-ready application.
+    This Streamlit dashboard is intended to show off capabilities of Azure OpenAI, including integration with AI Search, Azure Speech Services, and external APIs.
     """
     )
 
