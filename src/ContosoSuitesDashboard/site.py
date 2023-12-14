@@ -2,12 +2,9 @@ import streamlit as st
 import requests
 import pandas as pd
 import json
-import plotly.express as px
-import plotly.graph_objects as go
 import openai
 import inspect
-import pytz
-from datetime import datetime
+import azure.cognitiveservices.speech as speechsdk
 
 st.set_page_config(layout="wide")
 
@@ -17,6 +14,8 @@ with open('config.json') as f:
 aoai_endpoint = config['AOAIEndpoint']
 aoai_api_key = config['AOAIKey']
 deployment_name = config['AOAIDeploymentName']
+speech_key = config['SpeechKey']
+speech_region = config['SpeechRegion']
 
 ### Exercise 02: Chat with customer data
 def create_chat_completion(deployment_name, messages, endpoint, key, index_name):
@@ -171,6 +170,44 @@ def check_args(function, args):
     return True
 
 
+### Exercise 04
+def recognize_from_microphone(speech_key, speech_region, speech_recognition_language="en-US"):
+    # Create an instance of a speech config with specified subscription key and service region.
+    # Then set the speech recognition language to speech_recognition_language.
+
+    # TODO: fill in code
+    # speech_config = ...
+
+    # Create a microphone instance and speech recognizer.
+
+    # TODO: fill in code
+    # audio_config = ...
+    # speech_recognizer = ...
+
+    # Start speech recognition
+
+    # print("Speak into your microphone.")
+    # speech_recognition_result = speech_recognizer.recognize_once_async().get()
+
+    # Check the result
+
+    # if speech_recognition_result.reason == speechsdk.ResultReason.RecognizedSpeech:
+    #     print("Recognized: {}".format(speech_recognition_result.text))
+    #     return ...
+    # elif speech_recognition_result.reason == speechsdk.ResultReason.NoMatch:
+    #     print("No speech could be recognized: {}".format(speech_recognition_result.no_match_details))
+    #     return ...
+    # elif speech_recognition_result.reason == speechsdk.ResultReason.Canceled:
+    #     cancellation_details = speech_recognition_result.cancellation_details
+    #     print("Speech Recognition canceled: {}".format(cancellation_details.reason))
+    #     if cancellation_details.reason == speechsdk.CancellationReason.Error:
+    #         print("Error details: {}".format(cancellation_details.error_details))
+    #         print("Did you set the speech resource key and region values?")
+    #     return ...
+    
+    raise NotImplementedError
+    
+
 ### All Exercises
 def generate_chat(chat_option):
     # Initialize chat history
@@ -202,7 +239,25 @@ def main():
 
     chat_option = st.radio(label="Choose the chat option you want to try:", options=["Chat with Data", "Function Calls"])
 
-    generate_chat(chat_option)
+    # Initialize chat history
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+
+    # Display chat messages from history on app rerun
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+
+    # Exercise 04: Await a speech to text request
+    # Note that Streamlit does not have a great interface for keeping chat in a specific location
+    # so using this button will cause it to be in an awkward position after the first message.
+    
+    # TODO: complete this section
+    # if st.button("Speech to text"):
+
+    # Await a user message and handle the chat prompt when it comes in.
+    if prompt := st.chat_input("Enter a message:"):
+        handle_prompt(chat_option, prompt)
 
 if __name__ == "__main__":
     main()

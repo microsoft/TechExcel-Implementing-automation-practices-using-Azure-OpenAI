@@ -4,5 +4,7 @@
     "AOAIDeploymentName": "TODO",
     "SearchEndpoint": "TODO",
     "SearchKey": "TODO",
-    "SearchIndex": "TODO"
+    "SearchIndex": "TODO",
+    "SpeechKey": "TODO",
+    "SpeechRegion": "TODO"
 }
