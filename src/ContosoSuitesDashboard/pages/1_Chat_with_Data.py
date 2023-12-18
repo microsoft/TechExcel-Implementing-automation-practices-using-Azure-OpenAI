@@ -74,19 +74,8 @@ def get_customers(search_criterion, search_value):
     else:
         return f"Failure to find any customers with {search_criterion} {search_value}."
 
+# TODO: fill in the function call definition
 functions = [
-    {
-        "name": "get_customers",
-        "description": "Get a list of customers based on some search criterion.",
-        "parameters": {
-            "type": "object",
-            "properties": {
-                "search_criterion": {"type": "string", "enum": ["CustomerName", "LoyaltyTier", "DateOfMostRecentStay"]},
-                "search_value": {"type": "string"},
-            },
-            "required": ["search_criterion", "search_value"],
-        },
-    }
 ]
 
 available_functions = {
