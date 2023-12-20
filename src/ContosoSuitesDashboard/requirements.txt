@@ -3,7 +3,5 @@ numpy
 scikit-learn
 streamlit
 streamlit-extras
-seaborn
-plotly.express
 openai
 azure-cognitiveservices-speech
