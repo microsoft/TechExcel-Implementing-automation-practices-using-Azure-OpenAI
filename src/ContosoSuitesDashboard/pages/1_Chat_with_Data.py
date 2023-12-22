@@ -124,7 +124,8 @@ def handle_chat_prompt_with_functions(prompt):
     #    # Check if GPT returned a function call
     #    if response_message.function_call:
     #        # Get the function name and arguments
-    #        
+    #        TODO: fill in code
+    #
     #        # Verify the function
     #        if function_name not in available_functions:
     #            full_response = f"Sorry, I don't know how to call the function `{function_name}`."

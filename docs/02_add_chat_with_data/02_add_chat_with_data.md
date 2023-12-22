@@ -8,10 +8,10 @@ One of the most natural ways to integrate Azure OpenAI in an existing solution i
 
 After you complete this lab, you will be able to:
 
-* Prepare a dataset in Cosmos DB for ingestion into Azure OpenAI
-* Ingest data from Cosmos DB into Azure OpenAI via Azure AI Search
-* Test completions using the ChatGPT playground in Azure Open AI
-* Incorporate chat completions in an existing website
+* Prepare a dataset in Azure Blob Storage for ingestion into Azure OpenAI
+* Ingest data from Azure Blob Storage into Azure OpenAI via Azure AI Search
+* Test chat completions using the Chat Playground in Azure OpenAI
+* Incorporate chat completions in a Streamlit application
 
 ## Lab Duration
 

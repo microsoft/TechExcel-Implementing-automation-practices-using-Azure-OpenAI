@@ -3,5 +3,6 @@ numpy
 scikit-learn
 streamlit
 streamlit-extras
+streamlit_js_eval
 openai
 azure-cognitiveservices-speech

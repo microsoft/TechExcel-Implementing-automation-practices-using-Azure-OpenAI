@@ -1,5 +1,6 @@
 import streamlit as st
 import streamlit_extras.stateful_button as stx
+from streamlit_js_eval import streamlit_js_eval
 import requests
 import pandas as pd
 import json
@@ -186,6 +187,19 @@ def main():
 
     if 'transcription_results' in st.session_state:
         st.write(st.session_state.transcription_results)
+
+    st.write("""## Clear Messages between Calls
+        Select this button to clear out session state and refresh the page.
+        Do this before loading a new audio file or recording a new call.
+        This will ensure that transcription and compliance checks will happen correctly.
+    """)
+
+    if st.button("Clear messages"):
+        if 'file_transcription_results' in st.session_state:
+            del st.session_state.file_transcription_results
+        if 'transcription_results' in st.session_state:
+            del st.session_state.transcription_results
+        streamlit_js_eval(js_expressions="parent.window.location.reload()")
 
     st.write("## Is Your Call in Compliance?")
 

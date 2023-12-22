@@ -12,7 +12,7 @@ After you complete this lab, you will be able to:
 
 * Deploy a Bicep script to build Azure resources
 * Create an Azure OpenAI Service resource
-* Install Python and necessary Python packages on a virtual machine or local client
+* Install Python and necessary Python packages on a local machine
 
 ## Lab Duration
 
