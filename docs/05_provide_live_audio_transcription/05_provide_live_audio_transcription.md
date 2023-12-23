@@ -11,8 +11,8 @@ In this exercise, you will expand on the audio transcription work you did in Exe
 After you complete this lab, you will be able to:
 
 * Incorporate audio file upload and audio transcription into a Streamlit app
+* Incorporate live microphone transcription of a full audio stream into a Streamlit app
 * Check whether a call meets compliance requirements
-* Perform named entity extraction from transcribed audio
 
 ## Lab Duration
 

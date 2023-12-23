@@ -28,7 +28,10 @@ def create_transcription_request(audio_file, speech_key, speech_region, speech_r
     # speech_config = ...
     # TODO: set speech recognition language
 
-    # TODO: Prepare audio settings for the wave stream: channel, bits_per_sample, and samples_per_second
+    # Prepare audio settings for the wave stream
+    channels = 1
+    bits_per_sample = 16
+    samples_per_second = 16000
 
     # TODO: Create audio configuration using the push stream
     # wave_format = ...

@@ -2,7 +2,7 @@
 
 ## Lab Scenario
 
-This training will allow you to work through a customer proof of concept regarding Azure OpenAI and Azure AI Services. The scenario entails building a proof of concept for Contoso Suites, a luxury resort hotel chain with hotels in several Caribbean nations and territories. Contoso Suites prides itself on the "personal touch" experience its support department provides. In order to extend this experience, Contoso Suites is interested in seeing how AI services and Large Language Models (LLMs) can make it easier for support personnel to do their job.
+This training will have you work through a customer proof of concept regarding Azure OpenAI and Azure AI Services. The scenario entails building a proof of concept for Contoso Suites, a luxury resort hotel chain with hotels in several Caribbean nations and territories. Contoso Suites prides itself on the "personal touch" experience its support department provides. In order to extend this experience, Contoso Suites is interested in seeing how AI services and Large Language Models (LLMs) can make it easier for support personnel to do their job.
 
 In this first exercise, we will set the stage for Contoso Suites by deploying out resources needed for the proof of concept, as well as ensuring that we have the client tools necessary to run through the remaining exercises.
 
