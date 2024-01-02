@@ -6,5 +6,7 @@
     "SearchKey": "TODO",
     "SearchIndex": "TODO",
     "SpeechKey": "TODO",
-    "SpeechRegion": "TODO"
+    "SpeechRegion": "TODO",
+    "LanguageEndpoint": "TODO",
+    "LanguageKey": "TODO"
 }

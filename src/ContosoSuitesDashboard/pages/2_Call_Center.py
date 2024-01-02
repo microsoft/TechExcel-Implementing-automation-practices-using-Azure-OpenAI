@@ -9,6 +9,12 @@ import inspect
 import time
 from scipy.io import wavfile
 import azure.cognitiveservices.speech as speechsdk
+from azure.core.credentials import AzureKeyCredential
+from azure.ai.textanalytics import (
+        TextAnalyticsClient,
+        ExtractiveSummaryAction,
+        AbstractiveSummaryAction
+    )
 
 st.set_page_config(layout="wide")
 
@@ -20,7 +26,8 @@ aoai_api_key = config['AOAIKey']
 deployment_name = config['AOAIDeploymentName']
 speech_key = config['SpeechKey']
 speech_region = config['SpeechRegion']
-
+language_endpoint = config['LanguageEndpoint']
+language_key = config['LanguageKey']
 
 ### Exercise 05: Provide live audio transcription
 def create_transcription_request(audio_file, speech_key, speech_region, speech_recognition_language="en-US"):
@@ -107,23 +114,7 @@ def create_live_transcription_request(speech_key, speech_region, speech_recognit
 
     return
 
-
-def is_call_in_compliance():
-    # Check whether a call meets compliance requirements
-    # Call with a person includes recording message
-    # Call is about an appropriate topic for a hotel and resort chain -- should not be off-topic
-    raise NotImplementedError
-
-def create_named_entity_extraction_request(endpoint, key, region, text):
-    # Create a named entity extraction client
-    #client = speechsdk.TextAnalyticsClient(
-    #    endpoint=endpoint,
-    #    credential=speechsdk.AzureKeyCredential(key)
-    #)
-    #return client.recognize_entities(documents=[text])
-    raise NotImplementedError
-
-def make_compliance_chat_request(system, call_contents):
+def make_azure_openai_chat_request(system, call_contents):
     # Create an Azure OpenAI client.
 
     # Create and return a new chat completion request
@@ -149,12 +140,55 @@ def is_call_in_compliance(call_contents, include_recording_message, is_relevant_
         TODO: finish this based on the prompts above!
     """
 
-    # Call make_compliance_chat_request
+    # Call make_azure_openai_chat_request
     # Return the message content for the response's first choice
     raise NotImplementedError
 
 
-### Exercise 06: Generate call summary
+### Exercise 06: Generate call summaries
+def generate_extractive_summary(call_contents):
+    # TODO:
+    #   1. The call_contents parameter is formatted as a list of strings. Join them together with spaces to pass in as a single document.
+    #   2. Create a TextAnalyticsClient, connecting to your Language Service endpoint.
+    #   3. Call the begin_analyze_actions method on your client, passing in the joined call_contents as a array
+    #      and an ExtractiveSummaryAction with a max_sentence_count of 2.
+    #   4. Join the sentences within the client result with spaces.
+    #   5. Output the response in JSON format, with the summary labeled 'call-summary.'
+    raise NotImplementedError
+
+def generate_abstractive_summary(call_contents):
+    # TODO:
+    #   1. The call_contents parameter is formatted as a list of strings. Join them together with spaces to pass in as a single document.
+    #   2. Create a TextAnalyticsClient, connecting to your Language Service endpoint.
+    #   3. Call the begin_analyze_actions method on your client, passing in the joined call_contents as a array
+    #      and an ExtractiveSummaryAction with a sentence_count of 2.
+    #   4. Join the summaries within the client result with spaces.
+    #   5. Output the response in JSON format, with the summary labeled 'call-summary.'
+    raise NotImplementedError
+
+def generate_azure_openai_summary(call_contents):
+    # TODO:
+    #   1. The call_contents parameter is formatted as a list of strings. Join them together with spaces to pass in as a single document.
+    #   2. Write a system prompt that instructs the large language model to:
+    #      1. Generate a short (5 word) summary from the call transcript.
+    #      2. Create a two-sentence summary of the call transcript.
+    #      3. Output the response in JSON format, with the short summary labeled 'call-title' and the longer summary labeled 'call-summary.'
+    
+    system = f"""
+    """
+
+    #   3. Call make_azure_openai_chat_request.
+    #   4. Return the message content for the response's first choice.
+    raise NotImplementedError
+
+def create_named_entity_extraction_request(endpoint, key, region, text):
+    # Create a named entity extraction client
+    #client = speechsdk.TextAnalyticsClient(
+    #    endpoint=endpoint,
+    #    credential=speechsdk.AzureKeyCredential(key)
+    #)
+    #return client.recognize_entities(documents=[text])
+    raise NotImplementedError
 
 
 def main():
@@ -215,6 +249,27 @@ def main():
        # which has content. If neither has content, write out an error message for the user.
        # TODO: Make a call to is_call_in_compliance and write out the results using st.write()
        # TODO: Call st.success() to indicate that the compliance check is complete
+    
+    # Exercise 6: Generate call summaries
+    st.write("## Generate call summaries")
 
+    # TODO: Add a Streamlit button to generate an extractive summary of the call transcription. If the button is clicked:
+        # TODO: Use st.spinner() to wrap the summarization process.
+        # TODO: Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
+        # TODO: Set extractive_summary_contents and write its value to the Streamlit dashboard in JSON format.
+        # TODO: Call st.success() to indicate that the summarization process is complete.
+    
+    # TODO: Add a Streamlit button to generate an abstractive summary of the call transcription. If the button is clicked:
+        # TODO: Use st.spinner() to wrap the summarization process.
+        # TODO: Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
+        # TODO: Set abstractive_summary_contents and write its value to the Streamlit dashboard in JSON format.
+        # TODO: Call st.success() to indicate that the summarization process is complete.
+    
+    # TODO: Add a Streamlit button to generate a summary of the call transcription using Azure OpenAI. If the button is clicked:
+        # TODO: Use st.spinner() to wrap the summarization process.
+        # TODO: Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
+        # TODO: Set openai_summary_contents and write its value to the Streamlit dashboard in JSON format.
+        # TODO: Call st.success() to indicate that the summarization process is complete.
+    
 if __name__ == "__main__":
     main()

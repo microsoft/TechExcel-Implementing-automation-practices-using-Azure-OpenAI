@@ -6,3 +6,4 @@ streamlit-extras
 streamlit_js_eval
 openai
 azure-cognitiveservices-speech
+azure-ai-textanalytics
