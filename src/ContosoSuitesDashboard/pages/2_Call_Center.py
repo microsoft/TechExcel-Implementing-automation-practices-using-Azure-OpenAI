@@ -148,37 +148,61 @@ def is_call_in_compliance(call_contents, include_recording_message, is_relevant_
 ### Exercise 06: Generate call summaries
 def generate_extractive_summary(call_contents):
     # TODO:
-    #   1. The call_contents parameter is formatted as a list of strings. Join them together with spaces to pass in as a single document.
-    #   2. Create a TextAnalyticsClient, connecting to your Language Service endpoint.
-    #   3. Call the begin_analyze_actions method on your client, passing in the joined call_contents as a array
-    #      and an ExtractiveSummaryAction with a max_sentence_count of 2.
-    #   4. Join the sentences within the client result with spaces.
-    #   5. Output the response in JSON format, with the summary labeled 'call-summary.'
+    # 1. The call_contents parameter is formatted as a list of strings. Join them together with spaces to pass in as a single document.
+    
+    # 2. Create a TextAnalyticsClient, connecting it to your Language Service endpoint.
+    # client = ...
+
+    # 3. Complete the call the begin_analyze_actions method on your client, passing in the joined call_contents as an array
+    #    and an ExtractiveSummaryAction with a max_sentence_count of 2.
+    # poller = client.begin_analyze_actions(
+    #   ...
+    #)
+
+    #   4. Extract the summary result sentences and merge them into a single summary string.
+    # for result in poller.result():
+    #   ...
+
+    #   5. Return the summary as a JSON object in the shape '{"call-summary": extractive_summary}'.
     raise NotImplementedError
 
 def generate_abstractive_summary(call_contents):
     # TODO:
-    #   1. The call_contents parameter is formatted as a list of strings. Join them together with spaces to pass in as a single document.
-    #   2. Create a TextAnalyticsClient, connecting to your Language Service endpoint.
-    #   3. Call the begin_analyze_actions method on your client, passing in the joined call_contents as a array
-    #      and an ExtractiveSummaryAction with a sentence_count of 2.
-    #   4. Join the summaries within the client result with spaces.
-    #   5. Output the response in JSON format, with the summary labeled 'call-summary.'
+    # 1. The call_contents parameter is formatted as a list of strings. Join them together with spaces to pass in as a single document.
+
+    # 2. Create a TextAnalyticsClient, connecting it to your Language Service endpoint.
+    # client = ...
+    
+    # 3. Call the begin_analyze_actions method on your client, passing in the joined call_contents as an array
+    #    and an AbstractiveSummaryAction with a sentence_count of 2.
+    # poller = client.begin_analyze_actions(
+    #   ...
+    #)
+    
+    # 4. Extract the summary result summaries and merge them into a single summary string.
+    # for result in poller.result():
+    #   ...
+    
+    # 5. Return the summary as a JSON object in the shape '{"call-summary": abstractive_summary}'.
     raise NotImplementedError
 
-def generate_azure_openai_summary(call_contents):
+def generate_query_based_summary(call_contents):
     # TODO:
-    #   1. The call_contents parameter is formatted as a list of strings. Join them together with spaces to pass in as a single document.
-    #   2. Write a system prompt that instructs the large language model to:
-    #      1. Generate a short (5 word) summary from the call transcript.
-    #      2. Create a two-sentence summary of the call transcript.
-    #      3. Output the response in JSON format, with the short summary labeled 'call-title' and the longer summary labeled 'call-summary.'
-    
+    # 1. The call_contents parameter is formatted as a list of strings. Join them together with spaces to pass in as a single document.
+
+    # 2. Write a system prompt that instructs the large language model to:
+    #    - Generate a short (5 word) summary from the call transcript.
+    #    - Create a two-sentence summary of the call transcript.
+    #    - Output the response in JSON format, with the short summary labeled 'call-title' and the longer summary labeled 'call-summary.'
     system = f"""
     """
 
-    #   3. Call make_azure_openai_chat_request.
-    #   4. Return the message content for the response's first choice.
+    # 3. Call make_azure_openai_chat_request().
+    # response = ...
+
+    # 4. Return the message content for the response's first choice.
+
+    # 5. Return the summary.
     raise NotImplementedError
 
 def create_named_entity_extraction_request(endpoint, key, region, text):
@@ -253,23 +277,36 @@ def main():
     # Exercise 6: Generate call summaries
     st.write("## Generate call summaries")
 
-    # TODO: Add a Streamlit button to generate an extractive summary of the call transcription. If the button is clicked:
-        # TODO: Use st.spinner() to wrap the summarization process.
-        # TODO: Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
-        # TODO: Set extractive_summary_contents and write its value to the Streamlit dashboard in JSON format.
-        # TODO: Call st.success() to indicate that the summarization process is complete.
+    if st.button("Generate extractive summary"):
+        # TODO: Complete the logic for this button click by doing the following:
+        # 1. Use st.spinner() to wrap the summarization process.
+        # 2. Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
+        # 3. Call the generate_extractive_summary function and set its results to a variable named extractive_summary.
+        # 4. Call st.success() to indicate that the extractive summarization process is complete.
+        # 5. Save the extractive_summary value to session state.
+        # 6. Write the extractive_summary value to the Streamlit dashboard.
+        raise NotImplementedError
     
-    # TODO: Add a Streamlit button to generate an abstractive summary of the call transcription. If the button is clicked:
-        # TODO: Use st.spinner() to wrap the summarization process.
-        # TODO: Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
-        # TODO: Set abstractive_summary_contents and write its value to the Streamlit dashboard in JSON format.
-        # TODO: Call st.success() to indicate that the summarization process is complete.
+    if st.button("Generate abstractive summary"):
+        # TODO: Complete the logic for this button click by doing the following:
+        # 1. Use st.spinner() to wrap the summarization process.
+        # 2. Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
+        # 3. Call the generate_abstractive_summary function and set its results to a variable named abstractive_summary.
+        # 4. Call st.success() to indicate that the extractive summarization process is complete.
+        # 5. Save the abstractive_summary value to session state.
+        # 6. Write the abstractive_summary value to the Streamlit dashboard.
+        raise NotImplementedError
     
-    # TODO: Add a Streamlit button to generate a summary of the call transcription using Azure OpenAI. If the button is clicked:
-        # TODO: Use st.spinner() to wrap the summarization process.
-        # TODO: Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
-        # TODO: Set openai_summary_contents and write its value to the Streamlit dashboard in JSON format.
-        # TODO: Call st.success() to indicate that the summarization process is complete.
+    if st.button("Generate query-based summary"):
+        # TODO: Complete the logic for this button click by doing the following:
+        # 1. Use st.spinner() to wrap the summarization process.
+        # 2. Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
+        # 3. Call generate_query_based_summary function and set its results to a variable named openai_summary.
+        # 4. Call st.success() to indicate that the query-based summarization process is complete.
+        # 5. Save openai_summary value to session state.
+        # 6. Write the openai_summary value to the Streamlit dashboard.
+        
+        raise NotImplementedError
     
 if __name__ == "__main__":
     main()
