@@ -216,7 +216,7 @@ def create_sentiment_analysis_and_opinion_mining_request(call_contents):
     #result = client...
 
     # 4. Retrieve all document results that are not an error.
-    doc_result = [doc for doc in result if not doc.is_error]
+    doc_result = None #...
 
     # The output format is a JSON document with the shape:
     # {
