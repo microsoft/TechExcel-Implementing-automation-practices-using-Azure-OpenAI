@@ -205,13 +205,138 @@ def generate_query_based_summary(call_contents):
     # 5. Return the summary.
     raise NotImplementedError
 
-def create_named_entity_extraction_request(endpoint, key, region, text):
-    # Create a named entity extraction client
-    #client = speechsdk.TextAnalyticsClient(
-    #    endpoint=endpoint,
-    #    credential=speechsdk.AzureKeyCredential(key)
-    #)
-    #return client.recognize_entities(documents=[text])
+def create_sentiment_analysis_and_opinion_mining_request(call_contents):
+    # TODO:
+    # 1. The call_contents parameter is formatted as a list of strings. Join them together with spaces to pass in as a single document.
+
+    # 2. Create a Text Analytics Client
+    #client = ...
+
+    # 3. Analyze sentiment of call transcript, enabling opinion mining.
+    #result = client...
+
+    # 4. Retrieve all document results that are not an error.
+    doc_result = [doc for doc in result if not doc.is_error]
+
+    # The output format is a JSON document with the shape:
+    # {
+    #     "sentiment": document_sentiment,
+    #     "sentiment-scores": {
+    #         "positive": document_positive_score_as_two_decimal_float,
+    #         "neutral": document_neutral_score_as_two_decimal_float,
+    #         "negative": document_negative_score_as_two_decimal_float
+    #     },
+    #     "sentences": [
+    #         {
+    #             "text": sentence_text,
+    #             "sentiment": document_sentiment,
+    #             "sentiment-scores": {
+    #                 "positive": document_positive_score_as_two_decimal_float,
+    #                 "neutral": document_neutral_score_as_two_decimal_float,
+    #                 "negative": document_negative_score_as_two_decimal_float
+    #             },
+    #             "mined_opinions": [
+    #                 {
+    #                     "target-sentiment": opinion_sentiment,
+    #                     "target-text": opinion_target,
+    #                     "target-scores": {
+    #                         "positive": document_positive_score_as_two_decimal_float,
+    #                         "neutral": document_neutral_score_as_two_decimal_float,
+    #                         "negative": document_negative_score_as_two_decimal_float
+    #                     },
+    #                     "assessments": [
+    #                       {
+    #                         "assessment-sentiment": assessment_sentiment,
+    #                         "assessment-text": assessment_text,
+    #                         "assessment-scores": {
+    #                             "positive": document_positive_score_as_two_decimal_float,
+    #                             "negative": document_negative_score_as_two_decimal_float
+    #                         }
+    #                       }
+    #                     ]
+    #                 }
+    #             ]
+    #         }
+    #     ]
+    # }
+    sentiment = {}
+
+    # 5. Assign the correct values to the JSON object.
+    for document in doc_result:
+        #sentiment["sentiment"] = document...
+        sentiment["sentiment-scores"] = {
+            #"positive": document...,
+            #"neutral": document...,
+            #"negative": document...
+        }
+        
+        sentences = []
+        for s in document.sentences:
+            sentence = {}
+            #sentence["text"] = s...
+            #sentence["sentiment"] = s...
+            sentence["sentiment-scores"] = {
+                #"positive": s...,
+                #"neutral": s..,
+                #"negative": s..
+            }
+
+            mined_opinions = []
+            for mined_opinion in s.mined_opinions:
+                opinion = {}
+                #opinion["target-text"] = mined_opinion...
+                #opinion["target-sentiment"] = mined_opinion...
+                opinion["sentiment-scores"] = {
+                    #"positive": mined_opinion...,
+                    #"negative": mined_opinion...,
+                }
+                
+                opinion_assessments = []
+                for assessment in mined_opinion.assessments:
+                    opinion_assessment = {}
+                    #opinion_assessment["text"] = assessment...
+                    #opinion_assessment["sentiment"] = assessment...
+                    opinion_assessment["sentiment-scores"] = {
+                        #"positive": assessment...,
+                        #"negative": assessment...
+                    }
+                    opinion_assessments.append(opinion_assessment)
+
+                opinion["assessments"] = opinion_assessments
+                mined_opinions.append(opinion)
+
+            sentence["mined_opinions"] = mined_opinions
+            sentences.append(sentence)
+
+        sentiment["sentences"] = sentences
+    
+    #return sentiment
+    raise NotImplementedError
+
+def create_named_entity_extraction_request(call_contents):
+    # TODO:
+    # 1. The call_contents parameter is formatted as a list of strings. Join them together with spaces to pass in as a single document.
+
+    # 2. Create a TextAnalyticsClient, connecting it to your Language Service endpoint.
+    #client = ...
+
+    # 3. Recognize entities within the call transcript.
+    #result = client...
+    # Create named_entity list as a JSON array
+    named_entities = []
+
+    # 4. Add each extracted named entity to the named_entity array.
+    #for entity in result.entities:
+    #    named_entities.append({
+    #        "text": ...,
+    #        "category": ...,
+    #        "subcategory": ...,
+    #        "length": ...,
+    #        "offset": ...,
+    #        "confidence-score": ...
+    #    })
+
+    #return named entities
     raise NotImplementedError
 
 
@@ -279,8 +404,8 @@ def main():
 
     if st.button("Generate extractive summary"):
         # TODO: Complete the logic for this button click by doing the following:
-        # 1. Use st.spinner() to wrap the summarization process.
-        # 2. Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
+        # 1. Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
+        # 2. Use st.spinner() to wrap the summarization process.
         # 3. Call the generate_extractive_summary function and set its results to a variable named extractive_summary.
         # 4. Call st.success() to indicate that the extractive summarization process is complete.
         # 5. Save the extractive_summary value to session state.
@@ -289,8 +414,8 @@ def main():
     
     if st.button("Generate abstractive summary"):
         # TODO: Complete the logic for this button click by doing the following:
-        # 1. Use st.spinner() to wrap the summarization process.
-        # 2. Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
+        # 1. Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
+        # 2. Use st.spinner() to wrap the summarization process.
         # 3. Call the generate_abstractive_summary function and set its results to a variable named abstractive_summary.
         # 4. Call st.success() to indicate that the extractive summarization process is complete.
         # 5. Save the abstractive_summary value to session state.
@@ -299,14 +424,33 @@ def main():
     
     if st.button("Generate query-based summary"):
         # TODO: Complete the logic for this button click by doing the following:
-        # 1. Use st.spinner() to wrap the summarization process.
-        # 2. Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
+        # 1. Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
+        # 2. Use st.spinner() to wrap the summarization process.
         # 3. Call generate_query_based_summary function and set its results to a variable named openai_summary.
         # 4. Call st.success() to indicate that the query-based summarization process is complete.
         # 5. Save openai_summary value to session state.
         # 6. Write the openai_summary value to the Streamlit dashboard.
-        
         raise NotImplementedError
+    
+    st.write("## Analyze call sentiment and perform opinion mining")
+
+    # TODO: Add a Streamlit button to labeled "Analyze sentiment and mine opinions". If the button is clicked:
+        # 1. Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
+        # 2. Use st.spinner() to wrap the sentiment analysis process.
+        # 3. Call create_sentiment_analysis_and_opinion_mining_request function and set its results to a variable named sentiment_and_mined_opinions.
+        # 4. Call st.success() to indicate that the sentiment analysis process process is complete.
+        # 5. Save sentiment_and_mined_opinions value to session state.
+        # 6. Write the sentiment_and_mined_opinions value to the Streamlit dashboard.
+
+    st.write("## Extract named entities")
+
+    # TODO: Add a Streamlit button to labeled "Extract named entities". If the button is clicked:
+        # 1. Set call_contents to file_transcription_results. If it is empty, write out an error message for the user.
+        # 2. Use st.spinner() to wrap the named entity extraction process process.
+        # 3. Call create_named_entity_extraction_request function and set its results to a variable named named_entities.
+        # 4. Call st.success() to indicate that the entity extraction process process is complete.
+        # 5. Save named_entities value to session state.
+        # 6. Write the named_entities value to the Streamlit dashboard.
     
 if __name__ == "__main__":
     main()
