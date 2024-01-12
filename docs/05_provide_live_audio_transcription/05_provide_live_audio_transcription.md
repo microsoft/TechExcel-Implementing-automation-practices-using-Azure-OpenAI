@@ -1,3 +1,10 @@
+---
+title: 'Exercise 05: Provide live audio transcription'
+layout: default
+nav_order: 6
+has_children: true
+---
+
 # Exercise 05 - Provide live audio transcription to the Azure OpenAI service
 
 ## Lab Scenario

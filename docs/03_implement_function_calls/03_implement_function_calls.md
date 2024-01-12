@@ -1,3 +1,10 @@
+---
+title: 'Exercise 03: Implement function calling'
+layout: default
+nav_order: 4
+has_children: true
+---
+
 # Exercise 03 - Implement function calling to integrate with external APIs
 
 ## Lab Scenario

@@ -1,3 +1,10 @@
+---
+title: 'Exercise 04: Implement audio transcription'
+layout: default
+nav_order: 5
+has_children: true
+---
+
 # Exercise 04 - Implement audio transcription using Azure AI Services Speech service
 
 ## Lab Scenario

@@ -1,3 +1,10 @@
+---
+title: 'Exercise 02: Add chat with your data'
+layout: default
+nav_order: 3
+has_children: true
+---
+
 # Exercise 02 - Add chat with your data
 
 ## Lab Scenario

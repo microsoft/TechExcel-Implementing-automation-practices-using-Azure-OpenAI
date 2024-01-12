@@ -1,3 +1,10 @@
+---
+title: 'Exercise 01: Deploy application resources'
+layout: default
+nav_order: 2
+has_children: true
+---
+
 # Exercise 01 - Deploy application resources
 
 ## Lab Scenario
