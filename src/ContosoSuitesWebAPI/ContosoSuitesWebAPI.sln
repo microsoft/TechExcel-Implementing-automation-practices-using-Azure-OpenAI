@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{77EAF4F4-863B-411F-800C-96D0A40C498C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoSuitesWebAPI", "src\ContosoSuitesWebAPI\ContosoSuitesWebAPI.csproj", "{3A31C1C5-38AE-45BE-8E50-BC3110E0539F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContosoSuitesWebAPI", "ContosoSuitesWebAPI.csproj", "{3A31C1C5-38AE-45BE-8E50-BC3110E0539F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

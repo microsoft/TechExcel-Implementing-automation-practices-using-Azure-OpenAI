@@ -4,7 +4,7 @@
 
 Now that you have assisted Contoso Suites with automating the creation of audio transcriptions, they would like to leverage Azure AI Services to automate the generation of a call summary, eliminating the need for their customer service agents to do this manually at the end of each call.
 
-In this exercise, you will expand on the audio transcription work you did in Exercise 05, focusing on using Azure AI Services, including Azure OpenAI, to summarize the call's transcript and to extract insights from the transcript. You will also preform sentiment analysis and opinion mining.
+In this exercise, you will expand on the audio transcription work you did in Exercise 05, focusing on using Azure AI Services--including Azure OpenAI--to summarize the call's transcript and to extract insights from the transcript. You will also preform sentiment analysis and opinion mining.
 
 ## Objectives
 
