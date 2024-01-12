@@ -4,6 +4,6 @@ scikit-learn
 streamlit
 streamlit-extras
 streamlit_js_eval
-openai
+openai>=1.0.0
 azure-cognitiveservices-speech
 azure-ai-textanalytics
