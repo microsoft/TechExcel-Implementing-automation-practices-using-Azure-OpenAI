@@ -18,7 +18,7 @@ from azure.ai.textanalytics import (
 
 st.set_page_config(layout="wide")
 
-with open('config_full.json') as f:
+with open('config.json') as f:
     config = json.load(f)
 
 aoai_endpoint = config['AOAIEndpoint']
