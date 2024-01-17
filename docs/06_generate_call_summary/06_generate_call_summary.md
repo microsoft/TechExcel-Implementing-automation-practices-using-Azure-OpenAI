@@ -5,7 +5,7 @@ nav_order: 7
 has_children: true
 ---
 
-# Exercise 06 - Use Azure AI Services to generate a call summary and extract insights
+# Exercise 06 - Use Azure AI Services to generate call summaries and extract insights
 
 ## Lab Scenario
 
