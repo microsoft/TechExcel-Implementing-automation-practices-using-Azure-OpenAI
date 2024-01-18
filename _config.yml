@@ -1,4 +1,4 @@
-title: Implementing automation practices using Azure OpenAI
+title: Implementing Azure OpenAI
 description: This lab teaches you how to integrate Azure OpenAI and Azure AI Services into existing business practices. You will experiment with a variety of Azure OpenAI and Azure AI Services capabilities, including vectorization of existing files, performing chat based on a customer's dataset, making API calls through Azure OpenAI, transcribing recorded and live audio, checking audio for compliance purposes, and generating extractive and abstractive call summaries from audio recordings.
 theme: just-the-docs
 
