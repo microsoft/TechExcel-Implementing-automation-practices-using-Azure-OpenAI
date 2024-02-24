@@ -1,9 +1,9 @@
 pandas
 numpy
 scikit-learn
-streamlit
-streamlit-extras
-streamlit_js_eval
+streamlit==1.29.0
+streamlit-extras==0.3.6
+streamlit_js_eval==0.1.5
 openai>=1.0.0
-azure-cognitiveservices-speech
-azure-ai-textanalytics
+azure-cognitiveservices-speech>=1.33.0
+azure-ai-textanalytics>=5.3.0
