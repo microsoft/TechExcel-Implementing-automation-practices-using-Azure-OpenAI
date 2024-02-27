@@ -85,7 +85,7 @@ available_functions = {
 def create_chat_completion_with_functions(deployment_name, messages):
     # Create an Azure OpenAI client. We create it in here because each exercise will
     # require at a minimum different base URLs.
-    
+    #
     #client = openai.AzureOpenAI(
     #    base_url=f"{aoai_endpoint}/openai/deployments/{deployment_name}/",
     #    TODO: fill in rest of parameters
