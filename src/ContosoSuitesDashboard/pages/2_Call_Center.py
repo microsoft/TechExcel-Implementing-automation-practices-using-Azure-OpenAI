@@ -341,6 +341,7 @@ def create_named_entity_extraction_request(call_contents):
 
 
 def main():
+    call_contents = []
     st.write(
     """
     # Call Center
